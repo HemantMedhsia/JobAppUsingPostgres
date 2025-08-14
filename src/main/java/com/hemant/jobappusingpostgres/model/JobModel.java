@@ -1,5 +1,6 @@
 package com.hemant.jobappusingpostgres.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,8 +23,8 @@ public class JobModel {
 
     @Enumerated(EnumType.STRING)
     private JobStatus jobStatus;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
+    @JsonIgnoreProperties("totalJobs")
     private CompanyModel company;
 }

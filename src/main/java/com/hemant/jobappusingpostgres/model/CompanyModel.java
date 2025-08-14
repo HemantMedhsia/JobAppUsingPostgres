@@ -1,5 +1,8 @@
 package com.hemant.jobappusingpostgres.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +26,7 @@ public class CompanyModel {
     private String companyPhone;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("company")
     private List<JobModel> totalJobs;
 
 }
